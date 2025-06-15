@@ -13,14 +13,16 @@ import javax.swing.JTextField;
 
 import com.example.common.Message;
 
-public class ChatClientGUI extends JFrame {
+public class ChatClientGUI extends JFrame 
+{
     private JTextArea chatArea;
     private JTextField inputField;
     private JButton sendButton;
     private ChatClient client;
     private String username;
 
-    public ChatClientGUI(String host, int port, String username) throws IOException {
+    public ChatClientGUI(String host, int port, String username) throws IOException 
+    {
         super("Chat Client - " + username);
         this.username = username;
         client = new ChatClient(host, port);
@@ -47,12 +49,14 @@ public class ChatClientGUI extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
 
-        // Thread to receive messages
-        new Thread(() -> {
+        new Thread(() -> 
+        {
             try {
-                while (true) {
+                while (true) 
+                {
                     Message msg = client.receiveMessage();
-                    if (msg != null) {
+                    if (msg != null) 
+                    {
                         chatArea.append(msg.getSender() + ": " + msg.getContent() + "\n");
                     }
                 }
@@ -62,20 +66,26 @@ public class ChatClientGUI extends JFrame {
         }).start();
     }
 
-    private void sendMessage() {
+    private void sendMessage() 
+    {
         String text = inputField.getText().trim();
-        if (!text.isEmpty()) {
-            try {
+        if (!text.isEmpty()) 
+        {
+            try 
+            {
                 Message msg = new Message(username, text, System.currentTimeMillis());
                 client.sendMessage(msg);
                 inputField.setText("");
-            } catch (IOException e) {
-                chatArea.append("Failed to send message.\n");
+            } 
+            catch (IOException e) 
+            {
+                chatArea.append("Failed to send msg.\n");
             }
         }
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException 
+    {
         String host = JOptionPane.showInputDialog("Server IP:", "localhost");
         String portStr = JOptionPane.showInputDialog("Port:", "8808");
         String username = JOptionPane.showInputDialog("Your name:");
@@ -83,3 +93,4 @@ public class ChatClientGUI extends JFrame {
         new ChatClientGUI(host, port, username);
     }
 }
+//ogarnij jak ten .exec dzialajacy zrobic

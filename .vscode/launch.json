@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "ClientMain",
+            "request": "launch",
+            "mainClass": "com.example.client.ClientMain",
+            "projectName": "your-project"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"
