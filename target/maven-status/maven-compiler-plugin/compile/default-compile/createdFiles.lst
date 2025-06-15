@@ -1,0 +1,4 @@
+com\example\client\ChatClient.class
+com\example\server\ChatServer$ClientHandler.class
+com\example\server\ChatServer.class
+com\example\common\Message.class
